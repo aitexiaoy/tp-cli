@@ -1,5 +1,5 @@
 {
-  "name": "p-cli",
+  "name": "tp-cli",
   "version": "1.0.0",
   "description": "一个自用的多项目脚手架",
   "main": "index.js",
@@ -7,11 +7,9 @@
     "dev": "index.js"
   },
   "bin": {
-    "p-cli": "bin/index.js"
+    "tp-cli": "bin/index.js"
   },
-  "keywords": [
-    "cli"
-  ],
+  "keywords": ["cli","vue-cli","react-cli","electron-cli","npm-cli"],
   "author": "yangpeng",
   "license": "MIT",
   "dependencies": {
