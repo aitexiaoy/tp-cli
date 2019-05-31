@@ -9,7 +9,13 @@
   "bin": {
     "tp-cli": "bin/index.js"
   },
-  "keywords": ["cli","vue-cli","react-cli","electron-cli","npm-cli"],
+  "keywords": [
+    "cli",
+    "vue-cli",
+    "react-cli",
+    "electron-cli",
+    "npm-cli"
+  ],
   "author": "yangpeng",
   "license": "MIT",
   "dependencies": {
@@ -25,5 +31,7 @@
     "recursive-copy": "^2.0.10",
     "shelljs": "^0.8.3"
   },
-  "devDependencies": {}
+  "devDependencies": {
+    "sass-loader": "^6.0.6"
+  }
 }

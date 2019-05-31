@@ -1,0 +1,126 @@
+{
+  "name": "{{name}}",
+  "version": "{{projectVersion}}",
+  "description": "{{description}}",
+  "author": "{{author}}",
+  "license": "",
+  "main": "./dist/electron/main.js",
+  "scripts": {
+    "build-r": "node .render-build/build.js",
+    "build-win": "electron-builder --win",
+    "build-mac": "electron-builder --mac",
+    "build":"npm run build-win && npm run build-mac",
+    "build:dir": "cross-env node .render-build/build.js && electron-builder --dir",
+    "build:clean": "cross-env BUILD_TARGET=clean node .render-build/build.js",
+    "build:web": "cross-env BUILD_TARGET=web node .render-build/build.js",
+    "dev": "node .render-build/dev-runner.js",
+    "pack": "npm run pack:main && npm run pack:renderer",
+    "pack:main": "cross-env NODE_ENV=production webpack --progress --colors --config .render-build/webpack.main.config.js",
+    "pack:renderer": "cross-env NODE_ENV=production webpack --progress --colors --config .render-build/webpack.renderer.config.js",
+    "postinstall": "",
+    "docs": "docsify serve docs"
+  },
+  "build": {
+    "productName": "{{name}}",
+    "appId": "自定义appID.com.taoacat.wallpaperapplications",
+    "directories": {
+      "output": "build"
+    },
+    "publish": {
+      "provider": "generic",
+      "url": "{{替换自己的远程升级地址}}"
+    },
+    "files": [
+      "dist/electron/**/*"
+    ],
+    "dmg": {
+      "contents": [
+        {
+          "x": 410,
+          "y": 150,
+          "type": "link",
+          "path": "/Applications"
+        },
+        {
+          "x": 130,
+          "y": 150,
+          "type": "file"
+        }
+      ]
+    },
+    "mac": {
+      "icon": "build/icons/icon.icns"
+    },
+    "win": {
+      "icon": "build/icons/icon.ico",
+      "target": [
+        "nsis",
+        "zip"
+      ]
+    },
+    "linux": {
+      "icon": "build/icons"
+    }
+  },
+  "devDependencies": {
+    "ajv": "^6.5.0",
+    "babel-eslint": "^10.0.1",
+    "cfonts": "^2.1.2",
+    "chalk": "^2.4.1",
+    "copy-webpack-plugin": "^4.5.1",
+    "cross-env": "^5.1.6",
+    "css-loader": "^0.28.11",
+    "del": "^3.0.0",
+    "devtron": "^1.4.0",
+    "electron": "^4.0.1",
+    "electron-builder": "^20.38.5",
+    "electron-debug": "^2.1.0",
+    "electron-devtools-installer": "^2.2.4",
+    "electron-rebuild": "^1.8.4",
+    "eslint": "^5.16.0",
+    "eslint-config-airbnb-base": "^13.1.0",
+    "eslint-friendly-formatter": "^4.0.1",
+    "eslint-import-resolver-webpack": "^0.11.0",
+    "eslint-loader": "^2.1.2",
+    "eslint-plugin-html": "^5.0.3",
+    "eslint-plugin-import": "^2.17.2",
+    "eslint-plugin-node": "^8.0.1",
+    "eslint-plugin-promise": "^4.1.1",
+    "eslint-plugin-vue": "^5.2.2",
+    "file-loader": "^1.1.11",
+    "html-webpack-plugin": "^3.2.0",
+    "less": "^3.0.4",
+    "less-loader": "^4.1.0",
+    "mini-css-extract-plugin": "0.4.0",
+    "multispinner": "^0.2.1",
+    "node-loader": "^0.6.0",
+    "sass-loader": "^7.0.3",
+    "style-loader": "^0.21.0",
+    "url-loader": "^1.0.1",
+    "vue-html-loader": "^1.2.4",
+    "vue-loader": "^15.2.4",
+    "vue-style-loader": "^4.1.0",
+    "vue-template-compiler": "^2.6.7",
+    "webpack": "^4.15.1",
+    "webpack-cli": "^3.0.8",
+    "webpack-dev-server": "^3.1.4",
+    "webpack-hot-middleware": "^2.22.2"
+  },
+  "dependencies": {
+    "auto-launch": "^5.0.5",
+    "axios": "^0.18.0",
+    "cheerio": "^1.0.0-rc.2",
+    "electron-log": "^3.0.1",
+    "electron-updater": "^4.0.6",
+    "element-ui": "^2.5.4",
+    "request": "^2.88.0",
+    "vue": "^2.6.10",
+    "vue-electron": "^1.0.6",
+    "vue-router": "^3.0.1",
+    "vuex": "^3.0.1",
+    "vuex-electron": "^1.0.0",
+    "wallpaper": "^4.2.0",
+    "wangeditor": "^3.1.1",
+    "webp-converter": "^2.2.2"
+  }
+}

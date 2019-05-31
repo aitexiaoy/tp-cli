@@ -1,15 +1,18 @@
 <template>
-    <div>
-
+    <div class="page-main">
+        我是主页面
     </div>
 </template>
 
 <script>
-    export default {
+export default {
         
-    }
+}
 </script>
 
-<style lang="scss" scoped>
-
+<style scoped lang='less'>
+@import url('./aa.less');
+.page-main{
+    background: url('./image/aa.png') no-repeat center;
+}
 </style>
