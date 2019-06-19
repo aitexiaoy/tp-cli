@@ -1,6 +1,6 @@
 {
   "name": "tp-cli",
-  "version": "1.0.0",
+  "version": "0.0.1",
   "description": "一个自用的多项目脚手架",
   "main": "index.js",
   "scripts": {
@@ -32,6 +32,6 @@
     "shelljs": "^0.8.3"
   },
   "devDependencies": {
-    "sass-loader": "^6.0.6"
+   
   }
 }

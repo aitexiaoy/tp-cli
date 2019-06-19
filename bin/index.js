@@ -1,8 +1,6 @@
 #!/usr/bin/env node
 // 处理用户输入的命令
 const program = require("commander")
-// 下载模板
-const download = require("download-git-repo")
 // 问题交互
 const inquirer = require("inquirer")
 // node 文件模块
@@ -52,9 +50,9 @@ function deleteFiles(fileName) {
 }
 
 /**
- * 创建新的工程文件成功
+ * 合并配置参数
  */
-function getNewProjectSuccess(answers, fileName) {
+function mergeArgumentsToFiles(answers, fileName) {
   const filePackage = `${fileName}/package.json`
   const fielReadme = `${fileName}/readme.md`
   const meta = {
@@ -130,7 +128,7 @@ program.version("1.0.0", "-v, --version")
   .action(name => {
     if (!fs.existsSync(name)) {
       inquirer
-        .prompt([{
+      .prompt([{
           name: "projectType",
           message: "👉 👉 选择创建的项目类型:",
           type: "list",
@@ -169,7 +167,7 @@ program.version("1.0.0", "-v, --version")
                 const spinner = logStart("🐝 🐝 开始从远程下载文件")
                 getRemoteTem(answers.gitAddreaa, fileName)
                   .then(target => {
-                    getNewProjectSuccess(answers, fileName)
+                    mergeArgumentsToFiles(answers, fileName)
                     logSuccess(spinner, "🍗 🍗 下载成功了")
                     npmInstallAuto(fileName)
                   })
@@ -187,7 +185,7 @@ program.version("1.0.0", "-v, --version")
               // 复制文件夹
               copyFiles(`${path.resolve(__dirname, "../lib")}/${answers.projectType}/`, `${fileName}`)
                 .then(() => {
-                  getNewProjectSuccess(answers, fileName)
+                  mergeArgumentsToFiles(answers, fileName)
                   logSuccess(spinner, "🏄 🏄 🏄 工程模板已经复制成功了")
                   npmInstallAuto(fileName)
                 })

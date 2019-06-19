@@ -1,11 +1,6 @@
 const download = require('download-git-repo');
-const path=require('path');
 
-/**
- * 
- */
 module.exports = function (remoteUrl,target) {
-  target = path.join(target || '.', '.download-temp');
   // 默认master分支
   if(!remoteUrl.match('#')){
     remoteUrl=`${remoteUrl}#master`;
